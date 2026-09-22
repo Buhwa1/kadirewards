@@ -1,0 +1,19 @@
+{
+  "name": "Kadi Till",
+  "short_name": "Kadi",
+  "description": "Award and redeem loyalty points at the counter. Works offline.",
+  "start_url": "/till",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#121110",
+  "theme_color": "#121110",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

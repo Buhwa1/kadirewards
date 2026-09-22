@@ -16,3 +16,8 @@ node_modules
 # Local/system files
 .DS_Store
 *.log
+
+# Build and generated output
+.next/
+.vercel/
+coverage/

@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f3f1eb;
+  --paper: #fffcf7;
+  --fg: #161513;
+  --fg-muted: #6f6c64;
+  --fg-soft: #3f3d38;
+  --border: rgba(22, 21, 19, 0.08);
+  --border-strong: rgba(22, 21, 19, 0.14);
+  --accent: #1b4d3e;
+  --accent-fg: #fffcf7;
+  --sidebar: #161513;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html,
+body {
+  @apply bg-canvas text-ink antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01" on, "cv11" on;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .card {
+    @apply border border-black/[0.06] bg-paper;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 1px rgba(22, 21, 19, 0.03);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 text-sm font-medium;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    transition:
+      background-color var(--motion-quick) var(--ease-out),
+      color var(--motion-quick) var(--ease-out),
+      box-shadow var(--motion-quick) var(--ease-out),
+      transform var(--motion-quick) var(--ease-out),
+      opacity var(--motion-quick) var(--ease-out);
+  }
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-45;
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background: var(--accent);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: #163e32;
+  }
+
+  .btn-ghost {
+    @apply btn bg-paper text-ink;
+    box-shadow: 0 0 0 1px var(--border-strong);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: rgba(22, 21, 19, 0.03);
+  }
+
+  .btn-danger {
+    @apply btn text-red-800;
+    background: #f8eceb;
+    box-shadow: 0 0 0 1px rgba(127, 29, 29, 0.12);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: #f3ddd9;
+  }
+
+  .input {
+    @apply w-full bg-paper text-sm text-ink outline-none;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 0 1px var(--border-strong);
+    transition:
+      box-shadow var(--motion-quick) var(--ease-out),
+      background-color var(--motion-quick) var(--ease-out);
+  }
+  .input::placeholder {
+    color: color-mix(in oklab, var(--fg-muted) 80%, transparent);
+  }
+  .input:focus {
+    box-shadow:
+      0 0 0 1px var(--accent),
+      0 0 0 4px color-mix(in oklab, var(--accent) 16%, transparent);
+  }
+  textarea.input {
+    @apply py-3;
+    min-height: 0;
+  }
+  select.input {
+    @apply pr-8;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-medium uppercase tracking-[0.14em] text-ink-mute;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wide;
+  }
+
+  .stat {
+    @apply card px-5 py-4;
+  }
+  .stat-value {
+    @apply mt-2 font-display text-[1.75rem] font-medium leading-none tracking-tight tabular-nums;
+  }
+  .stat-label {
+    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-ink-mute;
+  }
+
+  .page-title {
+    @apply font-display text-[1.65rem] font-medium leading-tight tracking-tight;
+  }
+  .page-lede {
+    @apply mt-1.5 max-w-xl text-sm leading-relaxed text-ink-soft;
+  }
+  .section-title {
+    @apply text-sm font-semibold tracking-tight;
+  }
+  .hairline {
+    @apply border-black/[0.06];
+  }
+  .k-mark {
+    @apply grid place-items-center font-display font-medium text-white;
+    background: var(--accent);
+  }
+}
+
+/* Till: dark terminal, high-contrast keypad */
+.till-root {
+  min-height: 100vh;
+  background: #121110;
+  color: #f4f1ea;
+  color-scheme: dark;
+}
+.till-root .input {
+  background: #1c1b19;
+  color: #f4f1ea;
+  box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.12);
+}
+.till-root .input:focus {
+  box-shadow:
+    0 0 0 1px #c5d4cc,
+    0 0 0 4px rgba(197, 212, 204, 0.18);
+}
+.till-root .btn-primary {
+  background: #c5d4cc;
+  color: #121110;
+}
+.till-root .btn-primary:hover:not(:disabled) {
+  background: #d7e3dc;
+}
+.till-root .btn-ghost {
+  background: transparent;
+  color: #f4f1ea;
+  box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.16);
+}
+.till-root .btn-ghost:hover:not(:disabled) {
+  background: rgba(244, 241, 234, 0.06);
+}
+.till-root .label {
+  color: rgba(244, 241, 234, 0.5);
+}
+.till-root .card {
+  background: #1c1b19;
+  border-color: rgba(244, 241, 234, 0.08);
+}
+
+.keypad-key {
+  @apply flex items-center justify-center text-2xl font-medium tabular-nums;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: #1c1b19;
+  color: #f4f1ea;
+  box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.1);
+  transition:
+    background-color var(--motion-quick) var(--ease-out),
+    transform var(--motion-quick) var(--ease-out);
+}
+.keypad-key:active {
+  transform: scale(0.96);
+  background: #2a2825;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
