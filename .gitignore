@@ -1,0 +1,18 @@
+node_modules
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Local/system files
+.DS_Store
+*.log
