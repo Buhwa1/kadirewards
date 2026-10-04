@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { normalizePhone } from "@/lib/phone";
+import { isPlatformAdminEmail } from "@/lib/platform-admin";
 
 export type OnboardState = { error?: string };
 
@@ -23,6 +24,8 @@ export async function createBusiness(_prev: OnboardState, form: FormData): Promi
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login");
+
+  if (isPlatformAdminEmail(user.email)) redirect("/admin");
 
   const name = String(form.get("name") ?? "").trim();
   const category = String(form.get("category") ?? "").trim();

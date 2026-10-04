@@ -8,6 +8,7 @@ const NAV = [
   ["/dashboard/customers", "Customers"],
   ["/dashboard/rewards", "Rewards"],
   ["/dashboard/campaigns", "Campaigns"],
+  ["/dashboard/poster", "Sign-up QR"],
   ["/dashboard/staff", "Staff & till"],
   ["/dashboard/settings", "Settings"],
 ] as const;

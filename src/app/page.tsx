@@ -34,9 +34,9 @@ const POINTS = [
 ];
 
 const PLANS = [
-  { name: "Starter", price: "60,000", note: "1 till, 500 customers, WhatsApp receipts" },
-  { name: "Growth", price: "120,000", note: "3 tills, unlimited customers, campaigns", featured: true },
-  { name: "Chain", price: "300,000+", note: "Multiple branches, shared customer base" },
+  { name: "Starter", price: "100,000", note: "1 till, 500 customers, win-back list" },
+  { name: "Growth", price: "200,000", note: "3 tills, unlimited customers, campaigns", featured: true },
+  { name: "Chain", price: "350,000+", note: "Multiple branches, shared customer base" },
 ];
 
 function Mark({ className = "h-8 w-8" }: { className?: string }) {
@@ -168,6 +168,8 @@ export default function Landing() {
           <h2 className="mt-2 font-display text-3xl font-medium tracking-tight">One shop, one flat fee.</h2>
           <p className="mt-2 max-w-lg text-sm text-ink-soft">
             Paid by Mobile Money on the same day each month. Thirty days free — no card required.
+            One-off setup of UGX 150,000 covers printed cards, the till set up on your counter
+            and your cashiers trained.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {PLANS.map((t) => (

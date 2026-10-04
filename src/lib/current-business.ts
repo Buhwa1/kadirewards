@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { supabaseServer } from "./supabase/server";
+import { isPlatformAdminEmail } from "./platform-admin";
 import type { Business, Program } from "./types";
 
 /** Resolve the signed-in user's business, or send them where they need to go. */
@@ -23,7 +24,11 @@ export async function requireBusiness(): Promise<{
     .maybeSingle();
 
   const business = membership?.business as unknown as Business | undefined;
-  if (!business) redirect("/onboarding");
+  if (!business) {
+    // Super-admin is platform-only — do not force shop onboarding
+    if (isPlatformAdminEmail(user.email)) redirect("/admin");
+    redirect("/onboarding");
+  }
 
   const { data: program } = await supabase
     .from("programs")

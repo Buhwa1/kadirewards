@@ -53,7 +53,8 @@ export default function RedeemCode({ token }: { token: string }) {
       ) : (
         <>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-            Tap for a one-time code. It stops anyone else spending your points.
+            Cashier looks you up by phone or card code, then you read them this one-time code. It
+            stops anyone else spending your points.
           </p>
           <button onClick={mint} disabled={busy} className="btn-primary mt-5 w-full">
             {busy ? "Getting a code…" : "Show my code"}

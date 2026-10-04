@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { supabaseServer } from "@/lib/supabase/server";
+import { isPlatformAdminEmail } from "@/lib/platform-admin";
 
 export type AuthState = { error?: string; notice?: string };
 
@@ -13,6 +14,9 @@ export async function signIn(_prev: AuthState, form: FormData): Promise<AuthStat
   const supabase = await supabaseServer();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) return { error: error.message };
+
+  // Platform owner → super-admin dashboard, not a shop
+  if (isPlatformAdminEmail(email)) redirect("/admin");
   redirect("/dashboard");
 }
 
@@ -27,6 +31,9 @@ export async function signUp(_prev: AuthState, form: FormData): Promise<AuthStat
   if (!data.session) {
     return { notice: "Check your email to confirm the account, then sign in." };
   }
+
+  // Platform owner never creates a shop
+  if (isPlatformAdminEmail(email)) redirect("/admin");
   redirect("/onboarding");
 }
 

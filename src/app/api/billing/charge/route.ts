@@ -2,7 +2,14 @@ import { NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
-const PRICES: Record<string, number> = { starter: 60000, growth: 120000, chain: 300000 };
+/**
+ * Monthly subscription in UGX. This is the only list that can move money —
+ * the dashboard and the landing page are display copy and must be kept in step
+ * with it by hand.
+ *
+ * The one-off UGX 150,000 setup fee is collected in person, not here.
+ */
+const PRICES: Record<string, number> = { starter: 100000, growth: 200000, chain: 350000 };
 
 /**
  * Start a Mobile Money charge for the monthly subscription. Flutterwave's

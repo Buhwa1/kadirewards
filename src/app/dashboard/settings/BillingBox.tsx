@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 const PLANS = [
-  { id: "starter", name: "Starter", price: 60000, blurb: "1 till · 500 customers" },
-  { id: "growth", name: "Growth", price: 120000, blurb: "3 tills · unlimited customers · campaigns" },
-  { id: "chain", name: "Chain", price: 300000, blurb: "Multiple branches · shared customer base" },
+  { id: "starter", name: "Starter", price: 100000, blurb: "1 till · 500 customers" },
+  { id: "growth", name: "Growth", price: 200000, blurb: "3 tills · unlimited customers · campaigns" },
+  { id: "chain", name: "Chain", price: 350000, blurb: "Multiple branches · shared customer base" },
 ] as const;
 
 export default function BillingBox({

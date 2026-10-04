@@ -24,7 +24,10 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
-  const guarded = path.startsWith("/dashboard") || path.startsWith("/onboarding");
+  const guarded =
+    path.startsWith("/dashboard") ||
+    path.startsWith("/onboarding") ||
+    path.startsWith("/admin");
 
   if (guarded && !user) {
     const url = request.nextUrl.clone();
@@ -37,6 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // the till and the public card have their own auth; keep them out of here
-  matcher: ["/dashboard/:path*", "/onboarding/:path*", "/login"],
+  matcher: ["/dashboard/:path*", "/onboarding/:path*", "/admin/:path*", "/login"],
 };

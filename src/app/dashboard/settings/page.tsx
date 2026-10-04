@@ -20,9 +20,14 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="page-title">Settings</h1>
-        <p className="page-lede">Business identity, earning rules, tiers and billing.</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="page-title">Settings</h1>
+          <p className="page-lede">Business identity, earning rules, tiers and billing.</p>
+        </div>
+        <a href="/dashboard/poster" className="btn-ghost text-sm">
+          Print sign-up QR →
+        </a>
       </div>
 
       <form action={saveBusiness} className="card space-y-4 p-6 sm:p-7">

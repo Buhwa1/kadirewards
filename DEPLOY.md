@@ -195,3 +195,15 @@ npm run typecheck
 npm run build
 ./supabase/tests/run.sh     # 61 assertions against a throwaway Postgres
 ```
+
+## Super-admin dashboard
+
+Set `PLATFORM_ADMIN_EMAILS` to a comma-separated list of emails that can open `/admin`
+(platform analytics: businesses joined, subscription mix, customer totals).
+
+```
+PLATFORM_ADMIN_EMAILS=you@example.com,ops@example.com
+```
+
+Also set `NEXT_PUBLIC_APP_URL` (e.g. `https://kadi.app`) so printed sign-up posters
+encode the correct absolute join link.
